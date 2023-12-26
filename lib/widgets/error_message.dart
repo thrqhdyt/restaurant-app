@@ -6,14 +6,14 @@ class ErrorMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 56.0),
+      padding: const EdgeInsets.symmetric(vertical: 24.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
             'assets/error_image.png', // Replace with the path to your error image
-            width: 150.0,
-            height: 150.0,
+            width: 100.0,
+            height: 100.0,
           ),
           const SizedBox(height: 16.0),
           const Text(
