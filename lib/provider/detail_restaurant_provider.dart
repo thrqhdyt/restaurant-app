@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:restaurant_app/data/api/api_service.dart';
 import 'package:restaurant_app/data/model/detail_restaurant.dart';
 import 'package:restaurant_app/utils/result_state.dart';
@@ -17,7 +18,8 @@ class DetailRestaurantProvider extends ChangeNotifier {
     try {
       _state = ResultState(status: Status.loading, message: null, data: null);
       notifyListeners();
-      final detailRestaurant = await apiService.detailRestaurant(id);
+      final detailRestaurant =
+          await apiService.detailRestaurant(id, http.Client());
       // ignore: unnecessary_null_comparison
       if (detailRestaurant.restaurant == null) {
         _state = ResultState(

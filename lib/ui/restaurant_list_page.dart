@@ -8,7 +8,6 @@ import 'package:restaurant_app/widgets/network_error.dart';
 import 'package:restaurant_app/widgets/result_not_found.dart';
 
 class RestaurantListPage extends StatelessWidget {
-  static const routeName = '/home_screen';
   final controller = TextEditingController();
 
   RestaurantListPage({super.key});

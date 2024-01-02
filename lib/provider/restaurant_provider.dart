@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:restaurant_app/data/api/api_service.dart';
 import 'package:restaurant_app/utils/result_state.dart';
 
@@ -20,7 +21,7 @@ class RestaurantProvider extends ChangeNotifier {
       _state = ResultState(status: Status.loading, message: null, data: null);
       notifyListeners();
       if (query == '') {
-        final restaurant = await apiService.listRestaurant();
+        final restaurant = await apiService.listRestaurant(http.Client());
         if (restaurant.restaurants.isEmpty) {
           _state = ResultState(
               status: Status.noData, message: 'Empty Data', data: null);
@@ -33,7 +34,8 @@ class RestaurantProvider extends ChangeNotifier {
           return _state;
         }
       } else {
-        final restaurant = await apiService.searchRestaurant(query);
+        final restaurant =
+            await apiService.searchRestaurant(query, http.Client());
         if (restaurant.restaurants.isEmpty) {
           _state = ResultState(
               status: Status.noData, message: 'Empty Data', data: null);
